@@ -63,12 +63,14 @@ pipeline {
           return env.BRANCH_NAME ==~ 'release/.*' || env.BRANCH_NAME ==~'master'
         }
       }
+}
      stage('DT Deploy Event') {
-  when {
-      expression {
-      return env.BRANCH_NAME ==~ 'release/.*' || env.BRANCH_NAME ==~'master'
+       when {
+        expression {
+          return env.BRANCH_NAME ==~ 'release/.*' || env.BRANCH_NAME ==~'master'
+        }
+       }
       }
-  }
   steps {
     container("curl") {
       script {
